@@ -14,11 +14,9 @@ import javax.servlet.ServletRegistration;
  * Created by Антон Дементьев on 19.03.2017.
  */
 public class Main implements WebApplicationInitializer
-
-    {
-
-        private final static String DISPATCHER ="dispatcher";
-        public void onStartup(ServletContext servletContext) throws ServletException {
+{
+    private final static String DISPATCHER ="dispatcher";
+    public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext ctx= new AnnotationConfigWebApplicationContext();
         ctx.register(WebConfig.class);
         servletContext.addListener(new ContextLoaderListener(ctx));

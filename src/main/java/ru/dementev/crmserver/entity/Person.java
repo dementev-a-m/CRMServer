@@ -23,6 +23,7 @@ public class Person {
     private String middelName;
 
     @Column(name ="dataBithday", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date dataBithday;
 
     @Column(name ="email", nullable = false, length = 45)
@@ -102,5 +103,13 @@ public class Person {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
