@@ -24,8 +24,8 @@ public class PersonServiceImpl implements  PersonService {
 
         return personRepository.saveAndFlush(person);
     }
-
-    public void delete(long id) {
+    public String delete(long id) {
         personRepository.delete(id);
+        return "Запись удалена";
     }
 }

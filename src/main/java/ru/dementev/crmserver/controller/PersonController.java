@@ -34,8 +34,8 @@ public class PersonController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void deletePerson(@PathVariable long id){
-        personService.delete(id);
+    public String deletePerson(@PathVariable long id){
+        return personService.delete(id);
     }
 
 

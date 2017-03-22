@@ -8,5 +8,5 @@ public interface PersonService {
     List<Person> getAll();
     Person getById(long Id);
     Person save(Person person);
-    void delete(long id);
+    String delete(long id);
 }
