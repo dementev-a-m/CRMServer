@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name= "person")
@@ -26,8 +27,18 @@ public class Person {
     @Temporal(TemporalType.DATE)
     private Date dataBithday;
 
+    @Column(name = "address")
+    private String address;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+    private Set<MarketingOffers> marketingOffersSet;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+    private Set<Transaction> transactions;
+
     @Column(name ="email", nullable = false, length = 45)
     private String email;
+
 
     @Column(name ="phone", nullable = false, length = 45)
     private String phone;
@@ -111,5 +122,29 @@ public class Person {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Set<MarketingOffers> getMarketingOffersSet() {
+        return marketingOffersSet;
+    }
+
+    public void setMarketingOffersSet(Set<MarketingOffers> marketingOffersSet) {
+        this.marketingOffersSet = marketingOffersSet;
+    }
+
+    public Set<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(Set<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }

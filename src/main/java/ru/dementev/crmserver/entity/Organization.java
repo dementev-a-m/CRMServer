@@ -11,18 +11,36 @@ public class Organization {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
+
     @Column(name ="name", nullable = false, length = 45)
     private String name;
+
     @Column(name ="address", nullable = false, length = 45)
     private String address;
+
     @Column(name ="inn", nullable = false, length = 45)
     private int inn;
+
     @Column(name ="phone", nullable = false, length = 45)
     private String phone;
+
     @Column(name ="email", nullable = false, length = 45)
     private String email;
-    @Column(name ="primaryPersonId", nullable = false, length = 45)
-    private long primaryPersonId;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="primaryPersonId")
+    private Person person;
+
+    @Column(name = "rating")
+    private double rating;
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
     public Organization (){}
 
     public long getId() {
@@ -73,11 +91,11 @@ public class Organization {
         this.email = email;
     }
 
-    public long getPrimaryPersonId() {
-        return primaryPersonId;
+    public double getRating() {
+        return rating;
     }
 
-    public void setPrimaryPersonId(long primaryPersonId) {
-        this.primaryPersonId = primaryPersonId;
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 }

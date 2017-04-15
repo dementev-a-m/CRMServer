@@ -1,5 +1,6 @@
 package ru.dementev.crmserver.entity;
 
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,17 +12,49 @@ public class Transaction {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
-    @Column(name ="personId", nullable = false)
-    private long personId;
-    @Column(name ="organizationId", nullable = false)
-    private long organizationId;
-    @Column(name =" price", nullable = false)
-    private double price;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="personId")
+    private Person person;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="organizationId")
+    private Organization organization;
+
+    @Column(name ="sum", nullable = false)
+    private double sum;
+
     @Column(name ="status", nullable = false, length = 45)
     private String status;
+
     @Column(name ="date", nullable = false)
     private Date date;
+
+    @Column (name = "paymentType")
+    private String paymentType;
+
+    @Column(name = "rating")
+    private double rating;
+
+    @Column(name = "deliveryType")
+    private String deliveryType;
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
+
     public Transaction(){}
+
     public Date getDate() {
         return date;
     }
@@ -38,35 +71,44 @@ public class Transaction {
         this.status = status;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public long getOrganizationId() {
-        return organizationId;
-    }
-
-    public void setOrganizationId(long organizationId) {
-        this.organizationId = organizationId;
-    }
-
-    public long getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(long personId) {
-        this.personId = personId;
-    }
-
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public double getSum() {
+        return sum;
+    }
+
+    public void setSum(double sum) {
+        this.sum = sum;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+
+    public String getDeliveryType() {
+        return deliveryType;
+    }
+
+    public void setDeliveryType(String deliveryType) {
+        this.deliveryType = deliveryType;
     }
 }

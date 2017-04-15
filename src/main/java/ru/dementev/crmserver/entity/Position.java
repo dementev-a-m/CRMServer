@@ -5,24 +5,23 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name= "product")
-public class Product {
+@Table(name= "position")
+public class Position {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
 
-    @Column(name ="name", nullable = false, length = 45)
+    @Column(name = "name")
     private String name;
-
-    @Column(name ="type", nullable = false, length = 45)
-    private String type;
-
-    @Column(name ="price", nullable = false)
-    private double price;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="organizationId")
+    @JoinColumn(name = "organizationId")
     private Organization organization;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parentPositionId")
+    private Position position;
+
+    public Position(){}
 
     public Organization getOrganization() {
         return organization;
@@ -32,7 +31,14 @@ public class Product {
         this.organization = organization;
     }
 
-    public Product(){}
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     public long getId() {
         return id;
     }
@@ -49,19 +55,4 @@ public class Product {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 }

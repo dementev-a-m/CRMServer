@@ -8,24 +8,24 @@ import ru.dementev.crmserver.repository.PersonRepository;
 import java.util.List;
 
 @Service
-public class PersonServiceImpl implements  PersonService {
+public class  PersonServiceImpl implements  PersonService {
     @Autowired
-    PersonRepository personRepository;
+    PersonRepository repository;
 
     public List<Person> getAll() {
-        return personRepository.findAll();
+        return repository.findAll();
     }
 
     public Person getById(long Id) {
-        return personRepository.findOne(Id);
+        return repository.findOne(Id);
     }
 
     public Person save(Person person) {
 
-        return personRepository.saveAndFlush(person);
+        return repository.saveAndFlush(person);
     }
     public String delete(long id) {
-        personRepository.delete(id);
+        repository.delete(id);
         return "Запись удалена";
     }
 }

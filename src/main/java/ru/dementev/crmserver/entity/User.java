@@ -1,22 +1,68 @@
 package ru.dementev.crmserver.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name= "user")
 public class User {
     @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    private long id;
+
     @Column(name ="login", length = 20)
     private String login;
+
     @Column (name = "password",length = 30)
     private String password;
-    @Column (name = "organizationId")
-    private long organizationId;
-    @Column (name = "personId")
-    private long personId;
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn (name = "organizationId")
+    private Organization organization;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn (name = "personId")
+    private Person person;
+    @OneToOne (fetch = FetchType.LAZY)
+    @JoinColumn (name = "positionId")
+    private Position position;
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    @OneToMany(fetch =FetchType.LAZY, mappedBy = "user")
+    private Set<Task> tasks;
+
     public User(){}
 
     public String getLogin() {
@@ -35,19 +81,11 @@ public class User {
         this.password = password;
     }
 
-    public long getOrganizationId() {
-        return organizationId;
+    public long getId() {
+        return id;
     }
 
-    public void setOrganizationId(long organizationId) {
-        this.organizationId = organizationId;
-    }
-
-    public long getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(long personId) {
-        this.personId = personId;
+    public void setId(long id) {
+        this.id = id;
     }
 }

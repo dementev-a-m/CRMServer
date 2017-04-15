@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface ProductService {
     List<Product> getAll();
+    List<Product> getByOrganizationId(long organizationId);
+    List<Product> getByType(String type);
     Product getById(long Id);
     Product save(Product product);
     String delete(long id);
