@@ -10,7 +10,7 @@ public interface TransactionService {
     List<Transaction> getByPersonIdAndOrganizationId(long personId, long organizationId);
     List<Transaction> getByPersonIdAndOrganizationIdAndStatus(long personId, long organizationId,String status);
     List<Transaction> getByPersonIdAndStatus(long personId,String status);
-    Transaction getById(long Id);
+    Transaction getById(long id);
     Transaction save(Transaction transaction);
     String delete(long id);
 }

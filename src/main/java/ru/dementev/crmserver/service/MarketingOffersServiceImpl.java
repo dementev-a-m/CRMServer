@@ -22,7 +22,7 @@ public class MarketingOffersServiceImpl implements MarketingOffersService {
     }
 
     public List<MarketingOffers> getByPersonIdAndOrganizationId(long personId, long organizationId) {
-        return null;
+        return repository.findByPersonIdAndOrganizationId(personId,organizationId);
     }
 
     public List<MarketingOffers> getByPersonIdAndOrganizationIdAndStatus(long personId, long organizationId, String status) {
@@ -33,7 +33,7 @@ public class MarketingOffersServiceImpl implements MarketingOffersService {
         return null;
     }
 
-    public MarketingOffers getById(long Id) {
+    public MarketingOffers getById(long id) {
         return null;
     }
 

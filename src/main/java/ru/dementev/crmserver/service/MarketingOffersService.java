@@ -14,7 +14,7 @@ public interface MarketingOffersService {
     List<MarketingOffers> getByPersonIdAndOrganizationId(long personId, long organizationId);
     List<MarketingOffers> getByPersonIdAndOrganizationIdAndStatus(long personId, long organizationId,String status);
     List<MarketingOffers> getByPersonIdAndStatus(long personId,String status);
-    MarketingOffers getById(long Id);
+    MarketingOffers getById(long id);
     MarketingOffers save(MarketingOffers marketingOffers);
     String delete(long id);
 }

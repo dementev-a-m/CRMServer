@@ -16,15 +16,16 @@ public class OrganizationServiceImpl implements OrganizationService {
         return repository.findAll();
     }
 
-    public Organization getById(long Id) {
-        return null;
+    public Organization getById(long id) {
+        return repository.findOne(id);
     }
 
     public Organization save(Organization organization) {
-        return null;
+        return repository.saveAndFlush(organization);
     }
 
     public String delete(long id) {
-        return null;
+        repository.delete(id);
+        return "Запись удалена";
     }
 }

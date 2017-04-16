@@ -10,7 +10,7 @@ import java.util.List;
 public interface PositionService {
     List<Position> getAll();
     List<Position> getByOrganizationId();
-    Position getById(long Id);
+    Position getById(long id);
     Position save(Position position);
     String delete(long id);
 }

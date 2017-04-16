@@ -21,7 +21,7 @@ public class ProductServiceImpl implements ProductService {
         return null;
     }
 
-    public Product getById(long Id) {
+    public Product getById(long id) {
         return null;
     }
 

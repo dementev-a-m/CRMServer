@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface ProductTransactionService {
     List<ProductTransaction> getAll();
-    ProductTransaction getById(long Id);
+    ProductTransaction getById(long id);
     ProductTransaction save(ProductTransaction productTransaction);
     String delete(long id);
 }

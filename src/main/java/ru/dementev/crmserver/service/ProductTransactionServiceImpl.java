@@ -17,7 +17,7 @@ public class ProductTransactionServiceImpl implements ProductTransactionService 
         return repository.findAll();
     }
 
-    public ProductTransaction getById(long Id) {
+    public ProductTransaction getById(long id) {
         return null;
     }
 

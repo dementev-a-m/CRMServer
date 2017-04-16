@@ -21,15 +21,16 @@ public class PositionServiceImpl implements PositionService {
         return null;
     }
 
-    public Position getById(long Id) {
-        return null;
+    public Position getById(long id) {
+        return repository.findOne(id);
     }
 
     public Position save(Position position) {
-        return null;
+        return repository.saveAndFlush(position);
     }
 
     public String delete(long id) {
-        return null;
+        repository.delete(id);
+        return "Запись удалена";
     }
 }

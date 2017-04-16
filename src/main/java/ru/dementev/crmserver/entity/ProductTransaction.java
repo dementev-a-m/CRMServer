@@ -22,6 +22,8 @@ public class ProductTransaction {
     @Column(name = "number")
     private int number;
 
+    public ProductTransaction(){}
+
     public Transaction getTransaction() {
         return transaction;
     }
@@ -37,8 +39,6 @@ public class ProductTransaction {
     public void setProduct(Product product) {
         this.product = product;
     }
-
-    public ProductTransaction(){}
 
     public long getId() {
         return id;

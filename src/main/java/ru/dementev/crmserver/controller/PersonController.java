@@ -12,30 +12,30 @@ import java.util.List;
 @RequestMapping("/persons")
 public class PersonController {
     @Autowired
-    PersonServiceImpl personService;
+    PersonServiceImpl service;
 
     @RequestMapping(value = "/get/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<Person> getAllPerson(ModelMap model) {
-        return personService.getAll();
+    public List<Person> getAll(ModelMap model) {
+        return service.getAll();
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Person getPerson(@PathVariable long id){
-        return personService.getById(id);
+    public Person get(@PathVariable long id){
+        return service.getById(id);
     }
 
     @RequestMapping(value = "/set", method = RequestMethod.POST)
     @ResponseBody
-    public Person setPerson(@RequestBody Person person){
-        return personService.save(person);
+    public Person set(@RequestBody Person person){
+        return service.save(person);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public String deletePerson(@PathVariable long id){
-        return personService.delete(id);
+    public String delete(@PathVariable long id){
+        return service.delete(id);
     }
 
 

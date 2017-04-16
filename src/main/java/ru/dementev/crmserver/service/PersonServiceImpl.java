@@ -16,8 +16,8 @@ public class  PersonServiceImpl implements  PersonService {
         return repository.findAll();
     }
 
-    public Person getById(long Id) {
-        return repository.findOne(Id);
+    public Person getById(long id) {
+        return repository.findOne(id);
     }
 
     public Person save(Person person) {

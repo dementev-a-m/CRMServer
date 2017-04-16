@@ -11,7 +11,7 @@ public interface TaskService {
     List<Task> getAll();
     List<Task> getByUserId(long userId);
     List<Task> getByUserIdAndStatus(long userId, String status);
-    Task getById(long Id);
+    Task getById(long id);
     Task save(Task task);
     String delete(long id);
 }
